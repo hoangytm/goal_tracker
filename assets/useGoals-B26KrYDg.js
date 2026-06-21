@@ -1,1 +1,0 @@
-import{s as n,r as o}from"./index-BlbF29Mf.js";function c(){const e=o([]),r=o(!1);async function s(l=!0){r.value=!0;try{let a=n.from("goals").select("*").order("sort_order");l&&(a=a.eq("active",!0));const{data:u,error:t}=await a;if(t)throw t;return e.value=u??[],e.value}finally{r.value=!1}}return{goals:e,loading:r,fetchGoals:s}}export{c as u};
