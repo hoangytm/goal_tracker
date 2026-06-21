@@ -5,7 +5,7 @@
     </span>
     <div class="leading-tight">
       <p class="font-body text-xs text-slate-500">Current streak</p>
-      <p class="font-display text-2xl font-extrabold text-slate-900">{{ streak }} day{{ streak === 1 ? '' : 's' }}</p>
+      <p class="font-display text-xl font-bold text-slate-800">{{ streak }} day{{ streak === 1 ? '' : 's' }}</p>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <section class="space-y-4 page-enter">
     <header>
-      <h2 class="font-display text-4xl font-extrabold text-slate-900">Stats</h2>
+      <h2 class="font-display text-2xl font-bold text-slate-800">Stats</h2>
       <p class="font-body text-slate-500 text-sm">Clear, non-overlapping insights</p>
     </header>
 
@@ -10,26 +10,26 @@
     <div class="grid grid-cols-2 gap-3">
       <article class="rounded-2xl border border-sky-100 bg-white p-3 shadow-sm card-hover">
         <p class="text-xs font-body text-slate-500">Current streak</p>
-        <p class="font-display text-4xl font-extrabold text-slate-900">{{ currentStreak }}</p>
+        <p class="font-display text-3xl font-bold text-slate-800">{{ currentStreak }}</p>
       </article>
       <article class="rounded-2xl border border-sky-100 bg-white p-3 shadow-sm card-hover">
         <p class="text-xs font-body text-slate-500">Longest streak</p>
-        <p class="font-display text-4xl font-extrabold text-slate-900">{{ longestStreak }}</p>
+        <p class="font-display text-3xl font-bold text-slate-800">{{ longestStreak }}</p>
       </article>
       <article class="rounded-2xl border border-sky-100 bg-white p-3 shadow-sm card-hover">
         <p class="text-xs font-body text-slate-500">7-day success</p>
-        <p class="font-display text-4xl font-extrabold text-slate-900">{{ last7.percent }}%</p>
+        <p class="font-display text-3xl font-bold text-slate-800">{{ last7.percent }}%</p>
         <p class="text-xs font-body text-slate-500 mt-1">{{ last7.success }}/{{ last7.total }} days</p>
       </article>
       <article class="rounded-2xl border border-sky-100 bg-white p-3 shadow-sm card-hover">
         <p class="text-xs font-body text-slate-500">30-day success</p>
-        <p class="font-display text-4xl font-extrabold text-slate-900">{{ last30.percent }}%</p>
+        <p class="font-display text-3xl font-bold text-slate-800">{{ last30.percent }}%</p>
         <p class="text-xs font-body text-slate-500 mt-1">{{ last30.success }}/{{ last30.total }} days</p>
       </article>
     </div>
 
     <article class="rounded-2xl border border-sky-100 bg-white p-4 shadow-sm space-y-3 card-hover">
-      <h3 class="font-body font-bold text-lg text-slate-900">Goal insights (last 30 days)</h3>
+      <h3 class="font-body font-semibold text-base text-slate-700">Goal insights (last 30 days)</h3>
       <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-3">
           <p class="text-xs font-body text-emerald-700">Top goal</p>

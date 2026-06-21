@@ -4,7 +4,7 @@
     <header v-if="user" class="sticky top-3 z-50 px-4 page-enter">
       <div class="max-w-[560px] mx-auto bg-white/90 backdrop-blur rounded-2xl border border-sky-100 shadow-sm px-4 flex items-center justify-between min-h-14">
         <div class="min-w-0">
-          <span class="block font-display font-extrabold text-lg tracking-tight text-slate-900">Goal Tracker</span>
+          <span class="block font-display font-bold text-base tracking-tight text-slate-800">Goal Tracker</span>
           <span class="block text-[11px] leading-4 font-body text-slate-500 truncate max-w-56">{{ user?.email }}</span>
         </div>
         <button

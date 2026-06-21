@@ -2,7 +2,7 @@
   <div class="min-h-[80vh] flex items-center justify-center page-enter">
     <section class="w-full max-w-md bg-white/95 backdrop-blur border border-sky-100 shadow-xl shadow-sky-100/60 p-6 rounded-3xl card-hover">
       <p class="inline-flex items-center rounded-full bg-sky-50 text-sky-600 px-3 py-1 text-xs font-semibold tracking-wide">DAILY CONSISTENCY</p>
-      <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Goal Tracker</h1>
+      <h1 class="font-display text-2xl sm:text-3xl font-bold text-slate-800 mt-3">Goal Tracker</h1>
       <p class="font-body text-slate-500 text-sm mt-2">Track your goals every day with a clean and focused routine.</p>
 
       <form class="mt-5 space-y-4" @submit.prevent="handleSubmit">

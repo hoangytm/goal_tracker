@@ -5,8 +5,8 @@
   >
     <header class="flex items-center justify-between gap-3">
       <div class="min-w-0">
-        <p class="font-body text-xs text-slate-500">Target: {{ goal.target_value }} {{ unitLabel }}</p>
-        <h3 class="font-body font-bold text-lg text-slate-900 truncate">{{ goal.name }}</h3>
+        <p class="font-body text-xs text-slate-400">Target: {{ goal.target_value }} {{ unitLabel }}</p>
+        <h3 class="font-body font-semibold text-base text-slate-800 truncate">{{ goal.name }}</h3>
       </div>
       <span class="h-4 w-4 rounded-full shrink-0 ring-2 ring-white shadow" :style="{ backgroundColor: goal.color }" />
     </header>

@@ -1,7 +1,9 @@
 <template>
   <section class="space-y-4 page-enter">
+    <FireworksCanvas :active="fireworksActive" />
+
     <header class="space-y-2">
-      <p class="font-display text-3xl font-extrabold text-slate-900">{{ formattedToday }}</p>
+      <p class="font-display text-xl font-bold text-slate-700">{{ formattedToday }}</p>
       <StreakBadge :streak="streak" />
     </header>
 
@@ -24,8 +26,8 @@
 
       <div class="mt-4 rounded-2xl border border-sky-100 bg-white/95 backdrop-blur p-4 shadow-sm card-hover sticky bottom-24 z-10">
         <p class="font-body text-sm text-slate-500">Daily progress</p>
-        <p class="font-display text-4xl font-extrabold text-slate-900">{{ completedGoals }} / {{ threshold }}</p>
-        <p class="font-body font-semibold mt-1" :class="dayStatusClass">{{ dayStatusText }}</p>
+        <p class="font-display text-3xl font-bold text-slate-800">{{ completedGoals }} / {{ threshold }}</p>
+        <p class="font-body font-medium mt-1 text-sm" :class="dayStatusClass">{{ dayStatusText }}</p>
       </div>
     </div>
   </section>
@@ -34,6 +36,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import GoalCard from '@/components/GoalCard.vue'
+import FireworksCanvas from '@/components/FireworksCanvas.vue'
 import StreakBadge from '@/components/StreakBadge.vue'
 import { useAuth } from '@/composables/useAuth'
 import { useEntries, getDateInTimezone } from '@/composables/useEntries'
@@ -50,6 +53,8 @@ const { fetchCurrentStreak } = useStreak()
 const loading = ref(true)
 const pageError = ref('')
 const streak = ref(0)
+const fireworksActive = ref(false)
+const fireworksShownForDate = ref('')
 const settings = ref<UserSettings>({
   user_id: '',
   daily_success_threshold: 3,
@@ -86,6 +91,17 @@ const dayStatusClass = computed(() => {
   if (completedGoals.value === 0) return 'text-slate-500'
   return 'text-amber-600'
 })
+
+watch(
+  () => completedGoals.value >= threshold.value,
+  (justCompleted) => {
+    if (justCompleted && fireworksShownForDate.value !== entryDate.value && !loading.value) {
+      fireworksShownForDate.value = entryDate.value
+      fireworksActive.value = true
+      setTimeout(() => { fireworksActive.value = false }, 5200)
+    }
+  },
+)
 
 async function fetchSettings(userId: string) {
   const { data, error } = await supabase
