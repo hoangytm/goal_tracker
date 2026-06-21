@@ -5,7 +5,7 @@
       <div class="max-w-[560px] mx-auto bg-white/90 backdrop-blur rounded-2xl border border-sky-100 shadow-sm px-4 flex items-center justify-between min-h-14">
         <div class="min-w-0">
           <span class="block font-display font-bold text-base tracking-tight text-slate-800">Goal Tracker</span>
-          <span class="block text-[11px] leading-4 font-body text-slate-500 truncate max-w-56">{{ user?.email }}</span>
+          <span class="block text-[11px] leading-4 font-body text-slate-500 truncate max-w-56">{{ currentUsername }}</span>
         </div>
         <button
           class="text-sm font-body text-slate-500 hover:text-slate-900 transition-colors duration-200 cursor-pointer min-h-11 px-2"
@@ -41,12 +41,15 @@
 
 <script setup lang="ts">
 import { useRouter, useRoute, RouterLink, RouterView } from 'vue-router'
+import { computed } from 'vue'
 import { CheckSquare, CalendarDays, BarChart3, Settings } from '@lucide/vue'
 import { useAuth } from '@/composables/useAuth'
 
-const { user, logout } = useAuth()
+const { user, logout, getUsername } = useAuth()
 const router = useRouter()
 const route = useRoute()
+
+const currentUsername = computed(() => getUsername(user.value))
 
 const navItems = [
   { to: '/today',    label: 'Today',    icon: CheckSquare },

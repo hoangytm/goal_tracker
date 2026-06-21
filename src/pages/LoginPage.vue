@@ -7,15 +7,14 @@
 
       <form class="mt-5 space-y-4" @submit.prevent="handleSubmit">
         <div>
-          <label class="block text-sm font-body font-semibold text-slate-800 mb-1" for="email">Email</label>
+          <label class="block text-sm font-body font-semibold text-slate-800 mb-1" for="username">Username</label>
           <input
-            id="email"
-            v-model.trim="email"
-            type="email"
-            autocomplete="email"
-            required
+            id="username"
+            v-model="username"
+            type="text"
+            autocomplete="username"
             class="w-full h-11 px-3 rounded-xl border border-slate-300 bg-white text-slate-900 text-base outline-none focus:ring-2 focus:ring-sky-500"
-            placeholder="you@example.com"
+            placeholder="Your name"
           />
         </div>
 
@@ -26,10 +25,8 @@
             v-model="password"
             type="password"
             autocomplete="current-password"
-            required
-            minlength="6"
             class="w-full h-11 px-3 rounded-xl border border-slate-300 bg-white text-slate-900 text-base outline-none focus:ring-2 focus:ring-sky-500"
-            placeholder="At least 6 characters"
+            placeholder="Password"
           />
         </div>
 
@@ -65,7 +62,7 @@ import { useAuth } from '@/composables/useAuth'
 const { login, signup } = useAuth()
 const router = useRouter()
 
-const email = ref('')
+const username = ref('')
 const password = ref('')
 const loading = ref(false)
 const isSignup = ref(false)
@@ -82,9 +79,9 @@ async function handleSubmit() {
 
   try {
     if (isSignup.value) {
-      await signup(email.value, password.value)
+      await signup(username.value, password.value)
     } else {
-      await login(email.value, password.value)
+      await login(username.value, password.value)
     }
     await router.push('/today')
   } catch (error) {
