@@ -4,9 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { resolve } from 'path'
 
-// Change '/goal-tracker/' to match your actual GitHub repo name
+// Change '/goal_tracker/' to match your actual GitHub repo name
 export default defineConfig({
-  base: '/goal-tracker/',
+  base: '/goal_tracker/',
   plugins: [
     vue(),
     tailwindcss(),
@@ -23,8 +23,8 @@ export default defineConfig({
         theme_color: '#2563EB',
         background_color: '#FAFAFA',
         display: 'standalone',
-        start_url: '/goal-tracker/',
-        scope: '/goal-tracker/',
+        start_url: '/goal_tracker/',
+        scope: '/goal_tracker/',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
