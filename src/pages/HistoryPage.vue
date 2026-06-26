@@ -26,10 +26,34 @@
       </template>
     </div>
 
+    <div class="flex items-center gap-4 flex-wrap text-xs font-body text-slate-500 px-1">
+      <span class="flex items-center gap-1.5">
+        <span class="inline-block h-3 w-3 rounded-sm bg-amber-100 border border-amber-300"></span>
+        Exceed (all goals)
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="inline-block h-3 w-3 rounded-sm bg-emerald-100 border border-emerald-200"></span>
+        Success
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="inline-block h-3 w-3 rounded-sm bg-rose-100 border border-rose-200"></span>
+        Missed
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="inline-block h-3 w-3 rounded-sm bg-white border border-slate-200"></span>
+        No data
+      </span>
+    </div>
+
     <article v-if="selectedDate" class="rounded-2xl border border-sky-100 bg-white p-4 shadow-sm space-y-2 card-hover">
       <header class="flex items-center justify-between">
         <h3 class="font-body font-bold text-lg text-slate-900">{{ selectedDate }}</h3>
-        <span class="text-sm font-body" :class="selectedStatusClass">{{ selectedStatusLabel }}</span>
+        <span class="text-sm font-body" :class="selectedStatusClass">
+          {{ selectedStatusLabel }}
+          <span v-if="selectedSummary" class="text-xs opacity-70 ml-1">
+            ({{ selectedSummary.goals_completed }}/{{ selectedSummary.goals_total }})
+          </span>
+        </span>
       </header>
 
       <ul v-if="selectedEntries.length > 0" class="space-y-2">
@@ -104,13 +128,15 @@ const selectedSummary = computed(() => {
 const selectedStatusLabel = computed(() => {
   const summary = selectedSummary.value
   if (!summary || summary.goals_total <= 0) return 'No data'
+  if (summary.goals_completed === summary.goals_total) return 'Exceed'
   if (summary.goals_completed >= threshold.value) return 'Success'
   return 'Failed'
 })
 
 const selectedStatusClass = computed(() => {
+  if (selectedStatusLabel.value === 'Exceed')  return 'text-amber-600 font-bold'
   if (selectedStatusLabel.value === 'Success') return 'text-emerald-600'
-  if (selectedStatusLabel.value === 'Failed') return 'text-rose-600'
+  if (selectedStatusLabel.value === 'Failed')  return 'text-rose-600'
   return 'text-slate-500'
 })
 
