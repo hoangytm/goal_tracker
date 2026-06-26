@@ -4,7 +4,7 @@ import type { User } from '@supabase/supabase-js'
 
 const user = ref<User | null>(null)
 
-const AUTH_EMAIL_DOMAIN = 'goal-tracker.local'
+const AUTH_EMAIL_DOMAIN = 'goal-tracker.app'
 const AUTH_PW_MIN = 6
 const AUTH_PW_PAD = '_gt_'
 
